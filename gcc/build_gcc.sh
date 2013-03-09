@@ -10,7 +10,7 @@ GCC=gcc-4.6.3
 #SOURCE URLS
 GCC_INFRA_URL=ftp://gcc.gnu.org/pub/gcc/infrastructure
 ELF_URL=http://www.mr511.de/software
-GCC_URL=http://ftp.gnu.org/gnu/gcc #http://www.netgull.com/gcc/releases/
+GCC_URL=http://ftp.gnu.org/gnu/gcc
 
 #LOCAL PATHS
 GCC_INFRA_PREFIX=/tmp/gcc
