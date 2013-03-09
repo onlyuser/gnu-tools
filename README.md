@@ -7,6 +7,7 @@ About:
 ------
 
 gnu-tools is a collection of recipes for building gnu-tools from scratch.
+
 Currently, only these tools & versions are supported, but you can switch versions quite easily:
 
 * gcc 4.6.3
@@ -37,6 +38,7 @@ Usage:
 1. If you use Ubuntu and you wish to build gcc from scratch, you will need these two environment variables:
     * C_INCLUDE_PATH=/usr/include/x86_64-linux-gnu
     * CPLUS_INCLUDE_PATH=/usr/include/x86_64-linux-gnu
+
 2. Change into the directory for the tool you wish to build from scratch, and enter "make".
 
 References:
