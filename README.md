@@ -8,7 +8,7 @@ About:
 
 gnu-tools is a collection of recipes for building gnu-tools from scratch.
 
-Currently, only these tools & versions are supported, but you can switch versions quite easily:
+Currently, only these tools & versions are supported, but you can switch versions easily:
 
 * gcc 4.6.3
 * bison 2.5
