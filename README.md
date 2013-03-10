@@ -35,9 +35,9 @@ Installation (Debian):
 Usage:
 ------
 
-1. If you use Ubuntu and you wish to build gcc from scratch, you will need these two environment variables:
-    * C_INCLUDE_PATH=/usr/include/x86_64-linux-gnu
-    * CPLUS_INCLUDE_PATH=/usr/include/x86_64-linux-gnu
+1. If you use Ubuntu 11.04 x86_64 and wish to build gcc from scratch, you may need two extra environment variables:
+    * $C_INCLUDE_PATH -- where "asm/errno.h" resides (/usr/include/x86_64-linux-gnu on Ubuntu 11.04 x86_64)
+    * $CPLUS_INCLUDE_PATH -- where "asm/errno.h" resides (/usr/include/x86_64-linux-gnu on Ubuntu 11.04 x86_64)
 2. Change into the directory for the tool you wish to build from scratch, and enter "make".
 
 References:
