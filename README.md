@@ -49,6 +49,9 @@ References:
 
     <dt>"How to build GNU Compiler Collection"</dt>
     <dd>http://www.acsu.buffalo.edu/~charngda/cc_build.html</dd>
+
+    <dt>"Compilation cannot find file asm/errno.h"</dt>
+    <dd>http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48879</dd>
 </dl>
 
 Keywords:
