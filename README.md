@@ -35,10 +35,10 @@ Installation (Debian):
 Usage:
 ------
 
-1. If you use Ubuntu 11.04 x86_64 and wish to build gcc from scratch, you may need two extra environment variables:
-    * $C_INCLUDE_PATH -- where "asm/errno.h" resides (/usr/include/x86_64-linux-gnu)
-    * $CPLUS_INCLUDE_PATH -- where "asm/errno.h" resides (/usr/include/x86_64-linux-gnu)
-2. Change into the directory for the tool you wish to build from scratch, and enter "make".
+1. If you use Ubuntu 11.04 x86_64 and wish to build gcc, you may need two extra environment variables:
+    * $C_INCLUDE_PATH -- where "asm/errno.h" resides ("/usr/include/x86_64-linux-gnu" on my machine)
+    * $CPLUS_INCLUDE_PATH -- where "asm/errno.h" resides ("/usr/include/x86_64-linux-gnu" on my machine)
+2. Change into the directory for the tool you wish to build and enter "make".
 
 References:
 -----------
