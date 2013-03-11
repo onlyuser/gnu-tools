@@ -5,7 +5,11 @@ BISON=bison-2.5
 BISON_URL=http://ftp.gnu.org/gnu/bison/
 
 #LOCAL PATHS
-BISON_PREFIX=/tmp/bison
+DOWNLOADS=$(CURDIR)/downloads
+BUILD=$(CURDIR)/build
+
+#INSTALL PATHS
+BISON_PREFIX=$(CURDIR)/bison-install
 
 #==================
 # all
@@ -18,13 +22,15 @@ all : bison
 # bison
 #==================
 
-$(BISON).tar.gz :
-	wget $(BISON_URL)/$(BISON).tar.gz
+$(DOWNLOADS)/$(BISON).tar.gz :
+	mkdir -p $(DOWNLOADS)
+	wget $(BISON_URL)/$(BISON).tar.gz --directory-prefix=$(DOWNLOADS)
 
 .phony : bison
-bison : $(BISON).tar.gz
-	tar zxvf $(BISON).tar.gz
-	cd $(BISON); \
+bison : $(DOWNLOADS)/$(BISON).tar.gz
+	mkdir -p $(BUILD)
+	tar zxvf $(DOWNLOADS)/$(BISON).tar.gz -C $(BUILD)
+	cd $(BUILD)/$(BISON); \
 		mkdir -p $(BISON_PREFIX); \
 		./configure --prefix=$(BISON_PREFIX); \
 		make && make install
@@ -35,5 +41,6 @@ bison : $(BISON).tar.gz
 
 .PHONY : clean
 clean :
-	rm -rf $(BISON)
+	rm -rf $(BUILD)/$(BISON)
+	rm -rf $(BUILD)
 	rm -rf $(BISON_PREFIX)

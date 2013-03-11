@@ -11,8 +11,12 @@ ELF_URL=http://www.mr511.de/software
 GCC_URL=http://ftp.gnu.org/gnu/gcc
 
 #LOCAL PATHS
-GCC_INFRA_PREFIX=/tmp/gcc_infra
-GCC_PREFIX=/tmp/gcc
+DOWNLOADS=$(CURDIR)/downloads
+BUILD=$(CURDIR)/build
+
+#INSTALL PATHS
+GCC_INFRA_PREFIX=$(CURDIR)/gcc-infra-install
+GCC_PREFIX=$(CURDIR)/gcc-install
 
 #==================
 # all
@@ -25,15 +29,15 @@ all : gcc
 # gmp
 #==================
 
-$(GMP).tar.bz2 :
-	wget $(GCC_INFRA_URL)/$(GMP).tar.bz2
+$(DOWNLOADS)/$(GMP).tar.bz2 :
+	mkdir -p $(DOWNLOADS)
+	wget $(GCC_INFRA_URL)/$(GMP).tar.bz2 --directory-prefix=$(DOWNLOADS)
 
 .phony : gmp
-gmp : $(GMP).tar.bz2
-	bunzip2 -k $(GMP).tar.bz2
-	tar xvf $(GMP).tar
-	rm $(GMP).tar
-	cd $(GMP); \
+gmp : $(DOWNLOADS)/$(GMP).tar.bz2
+	mkdir -p $(BUILD)
+	tar jxvf $(DOWNLOADS)/$(GMP).tar.bz2 -C $(BUILD)
+	cd $(BUILD)/$(GMP); \
 		mkdir -p $(GCC_INFRA_PREFIX); \
 		./configure --disable-shared --enable-static --prefix=$(GCC_INFRA_PREFIX); \
 		make && make check && make install
@@ -42,15 +46,15 @@ gmp : $(GMP).tar.bz2
 # mpfr
 #==================
 
-$(MPFR).tar.bz2 :
-	wget $(GCC_INFRA_URL)/$(MPFR).tar.bz2
+$(DOWNLOADS)/$(MPFR).tar.bz2 :
+	mkdir -p $(DOWNLOADS)
+	wget $(GCC_INFRA_URL)/$(MPFR).tar.bz2 --directory-prefix=$(DOWNLOADS)
 
 .phony : mpfr
-mpfr : $(MPFR).tar.bz2 gmp
-	bunzip2 -k $(MPFR).tar.bz2
-	tar xvf $(MPFR).tar
-	rm $(MPFR).tar
-	cd $(MPFR); \
+mpfr : $(DOWNLOADS)/$(MPFR).tar.bz2 gmp
+	mkdir -p $(BUILD)
+	tar jxvf $(DOWNLOADS)/$(MPFR).tar.bz2 -C $(BUILD)
+	cd $(BUILD)/$(MPFR); \
 		mkdir -p $(GCC_INFRA_PREFIX); \
 		./configure --disable-shared --enable-static --prefix=$(GCC_INFRA_PREFIX) \
 			--with-gmp=$(GCC_INFRA_PREFIX); \
@@ -60,13 +64,15 @@ mpfr : $(MPFR).tar.bz2 gmp
 # mpc
 #==================
 
-$(MPC).tar.gz :
-	wget $(GCC_INFRA_URL)/$(MPC).tar.gz
+$(DOWNLOADS)/$(MPC).tar.gz :
+	mkdir -p $(DOWNLOADS)
+	wget $(GCC_INFRA_URL)/$(MPC).tar.gz --directory-prefix=$(DOWNLOADS)
 
 .phony : mpc
-mpc : $(MPC).tar.gz gmp mpfr
-	tar zxvf $(MPC).tar.gz
-	cd $(MPC); \
+mpc : $(DOWNLOADS)/$(MPC).tar.gz gmp mpfr
+	mkdir -p $(BUILD)
+	tar zxvf $(DOWNLOADS)/$(MPC).tar.gz -C $(BUILD)
+	cd $(BUILD)/$(MPC); \
 		mkdir -p $(GCC_INFRA_PREFIX); \
 		./configure --disable-shared --enable-static --prefix=$(GCC_INFRA_PREFIX) \
 			--with-gmp=$(GCC_INFRA_PREFIX) \
@@ -77,13 +83,15 @@ mpc : $(MPC).tar.gz gmp mpfr
 # elf
 #==================
 
-$(ELF).tar.gz :
-	wget $(ELF_URL)/$(ELF).tar.gz
+$(DOWNLOADS)/$(ELF).tar.gz :
+	mkdir -p $(DOWNLOADS)
+	wget $(ELF_URL)/$(ELF).tar.gz --directory-prefix=$(DOWNLOADS)
 
 .phony : elf
-elf : $(ELF).tar.gz
-	tar zxvf $(ELF).tar.gz
-	cd $(ELF); \
+elf : $(DOWNLOADS)/$(ELF).tar.gz
+	mkdir -p $(BUILD)
+	tar zxvf $(DOWNLOADS)/$(ELF).tar.gz -C $(BUILD)
+	cd $(BUILD)/$(ELF); \
 		mkdir -p $(GCC_INFRA_PREFIX); \
 		./configure --disable-shared --enable-static --prefix=$(GCC_INFRA_PREFIX); \
 		make && make check && make install
@@ -92,13 +100,15 @@ elf : $(ELF).tar.gz
 # gcc
 #==================
 
-$(GCC).tar.gz :
-	wget $(GCC_URL)/$(GCC)/$(GCC).tar.gz
+$(DOWNLOADS)/$(GCC).tar.gz :
+	mkdir -p $(DOWNLOADS)
+	wget $(GCC_URL)/$(GCC)/$(GCC).tar.gz --directory-prefix=$(DOWNLOADS)
 
 .phony : gcc
-gcc : $(GCC).tar.gz gmp mpfr mpc elf
-	tar zxvf $(GCC).tar.gz
-	cd $(GCC); \
+gcc : $(DOWNLOADS)/$(GCC).tar.gz gmp mpfr mpc elf
+	mkdir -p $(BUILD)
+	tar zxvf $(DOWNLOADS)/$(GCC).tar.gz -C $(BUILD)
+	cd $(BUILD)/$(GCC); \
 		mkdir -p $(GCC_PREFIX); \
 		./configure --disable-shared --prefix=$(GCC_PREFIX) \
 			--disable-bootstrap \
@@ -120,10 +130,11 @@ gcc : $(GCC).tar.gz gmp mpfr mpc elf
 
 .PHONY : clean
 clean :
-	rm -rf $(GMP)
-	rm -rf $(MPFR)
-	rm -rf $(MPC)
-	rm -rf $(ELF)
-	rm -rf $(GCC)
+	rm -rf $(BUILD)/$(GMP)
+	rm -rf $(BUILD)/$(MPFR)
+	rm -rf $(BUILD)/$(MPC)
+	rm -rf $(BUILD)/$(ELF)
+	rm -rf $(BUILD)/$(GCC)
+	rm -rf $(BUILD)
 	rm -rf $(GCC_INFRA_PREFIX)
 	rm -rf $(GCC_PREFIX)
