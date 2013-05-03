@@ -42,6 +42,15 @@ Usage:
     * $CPLUS_INCLUDE_PATH -- where "asm/errno.h" resides ("/usr/include/x86_64-linux-gnu" on my machine)
 2. Change into the directory for the tool you wish to build and enter "make".
 
+Make targets:
+-------------
+
+<table>
+    <tr><th> target </th><th> action                        </th></tr>
+    <tr><td> all    </td><td> make binaries                 </th></tr>
+    <tr><td> clean  </td><td> remove all intermediate files </th></tr>
+</table>
+
 References:
 -----------
 
