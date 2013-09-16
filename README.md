@@ -22,6 +22,7 @@ Requirements:
 * make
 * gcc
 * wget
+* curl
 * ftp://gcc.gnu.org/pub/gcc/infrastructure
 * http://www.mr511.de/software
 * http://ftp.gnu.org/gnu/gcc
@@ -33,6 +34,7 @@ Installation (Debian):
 2. sudo aptitude install make
 3. sudo aptitude install gcc
 4. sudo aptitude install wget
+5. sudo aptitude install curl
 
 Usage:
 ------
