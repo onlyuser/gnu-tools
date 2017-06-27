@@ -52,10 +52,8 @@ References:
 <dl>
     <dt>"How to install GCC from scratch with GMP, MPFR, MPC, ELF, without shared libraries?"</dt>
     <dd>http://stackoverflow.com/questions/9450394/how-to-install-gcc-from-scratch-with-gmp-mpfr-mpc-elf-without-shared-librari</dd>
-
     <dt>"How to build GNU Compiler Collection"</dt>
     <dd>http://www.acsu.buffalo.edu/~charngda/cc_build.html</dd>
-
     <dt>"Compilation cannot find file asm/errno.h"</dt>
     <dd>http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48879</dd>
 </dl>
