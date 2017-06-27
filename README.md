@@ -18,14 +18,7 @@ Currently, only these tools & versions are supported, but you can switch version
 Requirements:
 -------------
 
-* bash
-* make
-* gcc
-* wget
-* curl
-* ftp://gcc.gnu.org/pub/gcc/infrastructure
-* http://www.mr511.de/software
-* http://ftp.gnu.org/gnu/gcc
+    bash make gcc wget curl ftp://gcc.gnu.org/pub/gcc/infrastructure http://www.mr511.de/software http://ftp.gnu.org/gnu/gcc
 
 Installation (Debian):
 ----------------------
