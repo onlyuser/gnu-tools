@@ -5,8 +5,8 @@ gnu-tools
 
 Copyright (C) 2011-2017 <mailto:onlyuser@gmail.com>
 
-About:
-------
+About
+-----
 
 gnu-tools is a collection of recipes for building gnu-tools from scratch.
 
@@ -15,13 +15,13 @@ Currently, only these tools & versions are supported, but you can switch version
 * gcc 4.6.3
 * bison 2.5
 
-Requirements:
--------------
+Requirements
+------------
 
     bash make gcc wget curl ftp://gcc.gnu.org/pub/gcc/infrastructure http://www.mr511.de/software http://ftp.gnu.org/gnu/gcc
 
-Installation (Debian):
-----------------------
+Installation (Debian)
+---------------------
 
 1. git clone https://github.com/onlyuser/gnu-tools.git
 2. sudo aptitude install make
@@ -29,16 +29,16 @@ Installation (Debian):
 4. sudo aptitude install wget
 5. sudo aptitude install curl
 
-Usage:
-------
+Usage
+-----
 
 1. If you use Ubuntu 11.04 x86_64 and wish to build gcc, you may need two extra environment variables:
     * $C_INCLUDE_PATH -- where "asm/errno.h" resides ("/usr/include/x86_64-linux-gnu" on my machine)
     * $CPLUS_INCLUDE_PATH -- where "asm/errno.h" resides ("/usr/include/x86_64-linux-gnu" on my machine)
 2. Change into the directory for the tool you wish to build and enter "make".
 
-Make targets:
--------------
+Make Targets
+------------
 
 <table>
     <tr><th> target </th><th> action                        </th></tr>
@@ -46,8 +46,8 @@ Make targets:
     <tr><td> clean  </td><td> remove all intermediate files </th></tr>
 </table>
 
-References:
------------
+References
+----------
 
 <dl>
     <dt>"How to install GCC from scratch with GMP, MPFR, MPC, ELF, without shared libraries?"</dt>
@@ -58,7 +58,7 @@ References:
     <dd>http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48879</dd>
 </dl>
 
-Keywords:
----------
+Keywords
+--------
 
     gnu, gcc, bison, Linux
